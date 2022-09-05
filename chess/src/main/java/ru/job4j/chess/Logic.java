@@ -21,6 +21,14 @@ public final class Logic {
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
+        for (Figure currentFigure : figures) {
+            for (Cell currentCell : steps) {
+                if (currentFigure.position().getX() == currentCell.getX()
+                && currentFigure.position().getY() == (currentCell.getY())) {
+                    throw new OccupiedCellException("Some figure on the way");
+                }
+            }
+        }
         return true;
     }
 
